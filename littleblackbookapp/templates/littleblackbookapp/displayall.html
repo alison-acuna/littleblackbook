@@ -1,0 +1,15 @@
+{% load staticfiles %}
+
+{% include 'littleblackbookapp/header.html' %}
+<div class="frame">
+  <h3>
+    All Members
+  </h3>
+
+  <br>
+  {% for professional in professionals %}
+    {% include 'littleblackbookapp/professional.html' %}
+  {% endfor %}
+
+</div>
+{% include 'littleblackbookapp/footer.html' %}

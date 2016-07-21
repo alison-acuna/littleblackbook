@@ -1,12 +1,15 @@
 from django import forms
 
-from .models import Professional
+from .models import Professional, Company
 
 class ProfessionalForm(forms.ModelForm):
     """
     renames a variety of model columns for user interaction
     """
-
+    phone2 = forms.CharField(label="Phone 2")
+    email2 = forms.EmailField(label="E-mail 2")
+    website2 = forms.URLField(label="Website 2")
+    goals = forms.CharField(label="What are this professionals goals or needs?  What opportunities exist to suggest win-win situations?")
     # meetupid = forms.CharField(label='Meetup ID')
     # eventshostedname = forms.CharField(label='Events Hosted')
     # ohbcontributions = forms.IntegerField(label='Open Heart Brigade Participation')
@@ -19,5 +22,14 @@ class ProfessionalForm(forms.ModelForm):
 
     class Meta:
         model = Professional
-        fields = ('name', 'email', 'phone', 'website', 'neighborhood'
+        fields = ('name', 'email', 'phone', 'website', 'level', 'neighborhood', 'goals', 'address', 'phone2', 'email2', 'website2',
+        )
+
+class CompanyForm(forms.ModelForm):
+    """
+    provides user input for Companies
+    """
+    class Meta:
+        model = Company
+        fields = ('name', 'email', 'phone', 'website', 'address', 'employees',
         )

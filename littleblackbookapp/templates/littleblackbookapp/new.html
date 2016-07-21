@@ -1,19 +1,1 @@
-{% load staticfiles %}
 
-{% include 'littleblackbookapp/header.html' %}
-<br>
-<!-- <p>
-  Include any instructions about how to fill out the form.
-</p> -->
-<div class="frame">
-  {% block content %}
-      <h1>Add a Professional</h1>
-      <div class="jumbotron">
-        <form method="POST">{% csrf_token %}
-          {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Save</button>
-        </form>
-    </div>
-  {% endblock %}
-</div>
-{% include 'littleblackbookapp/footer.html' %}

@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name="home"),
     url(r'^newprofessional', views.newprofessional, name='newprofessional'),
+    url(r'^newcompany', views.newcompany, name='newcompany'),
     url(r'^edit/(?P<id>\d+)/', views.edit, name='edit'),
     url(r'^professional/(?P<id>\d+)/', views.professional, name='professional'),
     url(r'^displayall', views.displayall, name='displayall'),

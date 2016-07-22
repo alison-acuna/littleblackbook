@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .forms import ProfessionalForm
-from .models import Professional
+from .forms import ProfessionalForm, CompanyForm
+from .models import Professional, Company
 # Create your views here.
 def home(request):
     """
@@ -20,21 +20,20 @@ def newprofessional(request):
             return render(request, 'littleblackbookapp/success.html', {'form': form})
     else:
         form = ProfessionalForm()
+
     return render(request, 'littleblackbookapp/newprofessional.html', {'form': form})
 
 def newcompany(request):
-    """
-    allows user to create an entry for a new company
-    """
     if request.method == "POST":
-        form1 = CompanyForm(request.POST)
+        form = CompanyForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.save()
             return render(request, 'littleblackbookapp/success.html', {'form': form})
     else:
-        form = ProfessionalForm()
+        form = CompanyForm()
     return render(request, 'littleblackbookapp/newcompany.html', {'form': form})
+
 
 def edit(request, id):
     """

@@ -22,7 +22,7 @@ class ProfessionalForm(forms.ModelForm):
 
     class Meta:
         model = Professional
-        fields = ('name', 'email', 'phone', 'website', 'level', 'neighborhood', 'goals', 'address', 'phone2', 'email2', 'website2',
+        fields = ('name', 'email', 'phone', 'website', 'level', 'neighborhood', 'goals', 'address', 'phone2', 'email2', 'website2', 'company',
         )
 
 class CompanyForm(forms.ModelForm):
@@ -31,5 +31,5 @@ class CompanyForm(forms.ModelForm):
     """
     class Meta:
         model = Company
-        fields = ('name', 'email', 'phone', 'website', 'address', 'employees',
+        fields = ('name', 'email', 'phone', 'website', 'address',
         )

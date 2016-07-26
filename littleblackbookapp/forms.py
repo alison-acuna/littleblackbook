@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Professional, Company
+from .models import Professional, Company, Strengths
 
 class ProfessionalForm(forms.ModelForm):
     """
@@ -22,7 +22,7 @@ class ProfessionalForm(forms.ModelForm):
 
     class Meta:
         model = Professional
-        fields = ('name', 'email', 'phone', 'website', 'level', 'neighborhood', 'goals', 'address', 'phone2', 'email2', 'website2', 'company',
+        fields = ('name', 'email', 'phone', 'website', 'level', 'neighborhood', 'goals', 'address', 'phone2', 'email2', 'website2', 'company', 'strengths'
         )
 
 class CompanyForm(forms.ModelForm):
@@ -32,4 +32,13 @@ class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company
         fields = ('name', 'email', 'phone', 'website', 'address',
+        )
+
+class StrengthsForm(forms.ModelForm):
+    """
+    provides user input for Strengths
+    """
+    class Meta:
+        model = Strengths
+        fields = ('strengths',
         )

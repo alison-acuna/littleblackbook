@@ -6,20 +6,42 @@
   Include any instructions about how to fill out the form.
 </p>
 <div class="frame">
+  <h1> Add Entries to the Little Black Book </h1>
   {% block form1 %}
-      <h1>Add a Professional</h1>
-      <div class="jumbotron">
-        <form method="POST">{% csrf_token %}
-          {{ professionalform.as_p }}
-            <button type="submit" class="btn btn-primary" name="btnform1">Save</button>
-        </form>
-    {% endblock %}
-    {% block form2 %}
-        <form method="POST">{% csrf_token %}
-          {{ companyform.as_p }}
-            <button type="submit" class="btn btn-primary" name="btnform2">Save</button>
-        </form>
-      </div>
+    <div class="jumbotron">
+      <br>
+      <h2>Add a Company </h2>
+      <br>
+      <form method="POST">{% csrf_token %}
+        {{ companyform.as_p }}
+          <button type="submit" class="btn btn-primary" name="btnform2">Save</button>
+      </form>
+    </div>
+  {% endblock %}
+  {% block form3 %}
+    <div class="jumbotron">
+      <h2> Add Strengths </h2>
+      <br>
+      <form method="POST">{% csrf_token %}
+        {{ strengthsform.as_p }}
+          <button type="submit" class="btn btn-primary" name="btnform1">Save</button>
+      </form>
+    </div>
+  {% endblock %}
+  {% block form2 %}
+    <div class="jumbotron">
+      <h2>Add a Professional</h2>
+      <br>
+      <form method="POST">{% csrf_token %}
+        {{ professionalform.as_p }}
+          <p> Don't see the Company or Strengths you are looking for? </p>
+          <button type="company" class="btn btn-primary"> Add a Company </button>
+          <button type="strengths" class="btn btn-primary"> Add Strengths </button>
+          <br>
+          <br>
+          <button type="submit" class="btn btn-primary" name="btnform1">Save</button>
+      </form>
+    </div>
   {% endblock %}
 </div>
 {% include 'littleblackbookapp/footer.html' %}

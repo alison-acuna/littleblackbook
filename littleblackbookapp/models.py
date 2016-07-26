@@ -2,6 +2,15 @@ from django.db import models
 
 # Create your models here.
 
+class Strengths(models.Model):
+    strengths = models.CharField(max_length=200)
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.name
+
 class Company(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
@@ -15,7 +24,6 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
-
 
 class Professional(models.Model):
     name = models.CharField(max_length=200)
@@ -62,6 +70,7 @@ class Professional(models.Model):
     phone2 = models.CharField(max_length=12)
     website2 = models.URLField()
     company = models.ManyToManyField(Company)
+    strengths = models.ManyToManyField(Strengths)
 
     def publish(self):
         self.save()

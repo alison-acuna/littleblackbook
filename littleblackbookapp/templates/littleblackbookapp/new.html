@@ -1,0 +1,25 @@
+{% load staticfiles %}
+
+{% include 'littleblackbookapp/header.html' %}
+<br>
+<p>
+  Include any instructions about how to fill out the form.
+</p>
+<div class="frame">
+  {% block form1 %}
+      <h1>Add a Professional</h1>
+      <div class="jumbotron">
+        <form method="POST">{% csrf_token %}
+          {{ professionalform.as_p }}
+            <button type="submit" class="btn btn-primary" name="btnform1">Save</button>
+        </form>
+    {% endblock %}
+    {% block form2 %}
+        <form method="POST">{% csrf_token %}
+          {{ companyform.as_p }}
+            <button type="submit" class="btn btn-primary" name="btnform2">Save</button>
+        </form>
+      </div>
+  {% endblock %}
+</div>
+{% include 'littleblackbookapp/footer.html' %}

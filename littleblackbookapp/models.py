@@ -1,4 +1,7 @@
 from django.db import models
+from stream_django.activity import Activity
+from stream_framework.feeds.redis import RedisFeed
+from stream_framework.feed_managers.base import Manager
 
 # Create your models here.
 
@@ -77,3 +80,19 @@ class Professional(models.Model):
 
     def __str__(self):
         return self.name
+
+class Review(models.Model):
+    review = models.TextField()
+    professional = models.ForeignKey(
+    'Professional',
+    on_delete=models.CASCADE)
+
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.name
+
+# Social Media
+
+# implement your feed with redis as storage

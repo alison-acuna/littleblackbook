@@ -12,7 +12,8 @@
         <form method="POST">{% csrf_token %}
           {{ form.as_p }}
           <p> Don't see the Company or Strengths you are looking for? </p>
-          <p><a href="/newcompany"> Add a Company </a> </p>
+          <button type="company" class="btn btn-primary" id="addcompany"> Add a Company</button>
+          <button type="strengths" class="btn btn-primary" id="addstrength"> Add a Strenght </button>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
       </div>

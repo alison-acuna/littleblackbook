@@ -1,0 +1,12 @@
+
+{% load staticfiles %}
+
+{% include 'littleblackbookapp/header.html' %}
+
+<form method="post" action="">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Create new user account" />
+</form>
+
+{% include 'littleblackbookapp/footer.html' %}

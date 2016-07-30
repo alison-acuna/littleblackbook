@@ -1,6 +1,8 @@
 from django import forms
 
-from .models import Professional, Company, Strengths
+from .models import Professional, Company, Strengths, Review
+
+from django.contrib.auth.models import User
 
 class ProfessionalForm(forms.ModelForm):
     """
@@ -42,3 +44,18 @@ class StrengthsForm(forms.ModelForm):
         model = Strengths
         fields = ('strengths',
         )
+
+class ReviewForm(forms.ModelForm):
+    """
+    provides user input for Strengths
+    """
+    class Meta:
+        model = Review
+        fields = ('review','professional',
+
+        )
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'first_name' , 'last_name', 'password',)

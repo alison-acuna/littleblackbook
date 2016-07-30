@@ -20,9 +20,11 @@ from littleblackbookapp import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home, name="home"),
-    url(r'^new', views.new, name="new"),
-    # url(r'^newprofessional', views.newprofessional, name='newprofessional'),
-    # url(r'^newcompany', views.newcompany, name='newcompany'),
+    # url(r'^new', views.new, name="new")
+    url(r'^adduser', views.adduser, name="adduser"),
+    url(r'^newprofessional', views.newprofessional, name='newprofessional'),
+    url(r'^newcompany', views.newcompany, name='newcompany'),
+    url(r'^review', views.review, name="review"),
     url(r'^edit/(?P<id>\d+)/', views.edit, name='edit'),
     url(r'^professional/(?P<id>\d+)/', views.professional, name='professional'),
     url(r'^displayall', views.displayall, name='displayall'),

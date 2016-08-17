@@ -10,62 +10,62 @@ def home(request):
     """
     return render(request, 'littleblackbookapp/home.html', {})
 
-# def new(request):
-#     """
-#     renders the newprofessional form
-#     """
-#     if request.method == "POST":
-#         professionalform = ProfessionalForm(request.POST, prefix='professional')
-#         companyform = CompanyForm(request.POST, prefix='company')
-#         strengthsform = StrengthsForm(request.POST, prefix='strengths')
-#         if professionalform.is_valid() and companyform.is_valid() and strenghtsform.is_valid():
-#             post = professionalform.save(commit=False)
-#             post.save()
-#             post = companyform.save(commit=False)
-#             post.save()
-#             post = strengthsform.save(commit=False)
-#             post.save()
-#             return render(request, 'littleblackbookapp/success.html', {
-#             'professionalform': professionalform,
-#             'companyform': companyform,
-#             'strengthsform': strengthsform
-#             })
-#     else:
-#         professionalform = ProfessionalForm(prefix="professional")
-#         companyform = CompanyForm(prefix="company")
-#         strengthsform = StrengthsForm(prefix='strengths')
-#
-#     return render(request, 'littleblackbookapp/new.html', {
-#     'professionalform': professionalform,
-#     'companyform': companyform,
-#     'strengthsform': strengthsform
-#     })
-
-def newprofessional(request):
+def new(request):
     """
     renders the newprofessional form
     """
     if request.method == "POST":
-        form = ProfessionalForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
+        professionalform = ProfessionalForm(request.POST, prefix='professional')
+        companyform = CompanyForm(request.POST, prefix='company')
+        strengthsform = StrengthsForm(request.POST, prefix='strengths')
+        if professionalform.is_valid() and companyform.is_valid() and strenghtsform.is_valid():
+            post = professionalform.save(commit=False)
             post.save()
-            return render(request, 'littleblackbookapp/success.html', {'form': form})
-    else:
-        form = ProfessionalForm()
-
-    return render(request, 'littleblackbookapp/newprofessional.html', {'form': form})
-
-def newcompany(request):
-    if request.method == "POST":
-        form = CompanyForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
+            post = companyform.save(commit=False)
             post.save()
-            return render(request, 'littleblackbookapp/success.html', {'form': form})
+            post = strengthsform.save(commit=False)
+            post.save()
+            return render(request, 'littleblackbookapp/success.html', {
+            'professionalform': professionalform,
+            'companyform': companyform,
+            'strengthsform': strengthsform
+            })
     else:
-        form = CompanyForm()
-    return render(request, 'littleblackbookapp/newcompany.html', {'form': form})
+        professionalform = ProfessionalForm(prefix="professional")
+        companyform = CompanyForm(prefix="company")
+        strengthsform = StrengthsForm(prefix='strengths')
+
+    return render(request, 'littleblackbookapp/new.html', {
+    'professionalform': professionalform,
+    'companyform': companyform,
+    'strengthsform': strengthsform
+    })
+
+# def newprofessional(request):
+#     """
+#     renders the newprofessional form
+#     """
+#     if request.method == "POST":
+#         form = ProfessionalForm(request.POST)
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.save()
+#             return render(request, 'littleblackbookapp/success.html', {'form': form})
+#     else:
+#         form = ProfessionalForm()
+#
+#     return render(request, 'littleblackbookapp/newprofessional.html', {'form': form})
+#
+# def newcompany(request):
+#     if request.method == "POST":
+#         form = CompanyForm(request.POST)
+#         if form.is_valid():
+#             post = form.save(commit=False)
+#             post.save()
+#             return render(request, 'littleblackbookapp/success.html', {'form': form})
+#     else:
+#         form = CompanyForm()
+#     return render(request, 'littleblackbookapp/newcompany.html', {'form': form})
 
 def review(request):
         """

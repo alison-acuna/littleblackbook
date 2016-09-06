@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from .forms import ProfessionalForm, CompanyForm, StrengthsForm, ReviewForm, UserForm
-from .models import Professional, Company, Strengths, Review
+from .models import Professional, Company, Strengths, Review, Post
 from django.contrib.auth import login
 from django.http import HttpResponseRedirect
+from django.utils import timezone
 # Create your views here.
 def home(request):
     """
@@ -12,7 +13,7 @@ def home(request):
 
 def new(request):
     """
-    renders the newprofessional form
+    renders the newprofessional form which includes company, strenghts, and professional forms
     """
     if request.method == "POST":
         professionalform = ProfessionalForm(request.POST, prefix='professional')
@@ -40,6 +41,8 @@ def new(request):
     'companyform': companyform,
     'strengthsform': strengthsform
     })
+
+
 
 # def newprofessional(request):
 #     """
@@ -155,3 +158,10 @@ def adduser(request):
     else:
         form = UserForm()
     return render(request, 'littleblackbookapp/adduser.html', {'form': form})
+
+
+
+
+def socialfeed(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'littleblackbookapp/socialfeed.html', {'posts': posts})

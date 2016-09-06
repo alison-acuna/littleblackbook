@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^edit/(?P<id>\d+)/', views.edit, name='edit'),
     url(r'^professional/(?P<id>\d+)/', views.professional, name='professional'),
     url(r'^displayall', views.displayall, name='displayall'),
+    url(r'^socialfeed', views.socialfeed, name='socialfeed'),
 ]

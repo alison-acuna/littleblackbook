@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import stream
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,6 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'o=w$_c*+@mr)ip#zj(mjdu!g%yr9o3pwqismpmyolxc&*k1d5@'
+
+STREAM_API_KEY = 'ayrzs24zd2wa'
+STREAM_API_SECRET = 'qve9vkccgxueppvugbzkk3d7dpf7dskwst5g42wkjkdtxmrtgcvecggkdgkb9q8g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'littleblackbookapp',
+    'stream_django',
 ]
 
 

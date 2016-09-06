@@ -1,5 +1,7 @@
 from django.db import models
-from stream_django.activity import Activity
+from django.utils import timezone
+
+# Implemented for stream_framework
 from stream_framework.feeds.redis import RedisFeed
 from stream_framework.feed_managers.base import Manager
 
@@ -94,5 +96,46 @@ class Review(models.Model):
         return self.name
 
 # Social Media
+
+class Post(models.Model):
+    author = models.ForeignKey('auth.User')
+    title = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(
+            default=timezone.now)
+    published_date = models.DateTimeField(
+            blank=True, null=True)
+
+    def publish(self):
+        self.published_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.title
+
+# Implemented for stream_framework
+
+# class PinFeed(RedisFeed):
+#     key_format = 'feed:normal:%(user_id)s'
+#
+# class UserPinFeed(PinFeed):
+#     key_format = 'feed:user:%(user_id)s'
+#
+# class PinManager(Manager):
+#     feed_classes = dict(
+#         normal=PinFeed,
+#     )
+#     user_feed_class = UserPinFeed
+#
+#     def add_pin(self, pin):
+#         activity = pin.create_activity()
+#         # add user activity adds it to the user feed, and starts the fanout
+#         self.add_user_activity(pin.user_id, activity)
+#
+#     def get_user_follower_ids(self, user_id):
+#         ids = Follow.objects.filter(target=user_id).values_list('user_id', flat=True)
+#         return {FanoutPriority.HIGH:ids}
+#
+# manager = PinManager()
 
 # implement your feed with redis as storage
